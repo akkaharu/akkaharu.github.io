@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="alert(add)" id="add">+</button>
+    <button onclick="alert(substract)" id="substract">-</button>
+    <button onclick="alert(multiply)" id="multiply">*</button>
+    <button onclick="alert(divide)" id="divide">/</button>
+    <script>
+        let num1 = prompt ("напиши первое число");
+        let num2 = prompt ("напиши второе число");
+
+        function calcAdd(num1, num2) {
+            return Number(num1) + Number(num2);
+        }
+        let add = Number(num1) + Number(num2);
+
+        function calcSubstract(num1, num2) {
+            return Number(num1) - Number(num2);
+        }
+        let substract = Number(num1) - Number(num2);
+
+        function calcMultiply(num1, num2) {
+            return Number(num1) * Number(num2);
+        }
+        let multiply = Number(num1) * Number(num2);
+
+        function calcDivide(num1, num2) {
+            return Number(num1) / Number(num2);
+        }
+        let divide = Number(num1) / Number(num2);
+    </script>
+</body>
+</html>
