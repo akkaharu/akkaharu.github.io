@@ -7,9 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="alert(`Привет, ${result}!`)">Нажми на меня!</button>
+    <input type="text" id="name" placeholder="Как тебя зовут?">
+    <button id="btnHello">Поздороваться</button>
     <script>
-        let result = prompt ("Как тебя зовут?");
+        const hello = () => {
+        const userName = document.getElementById("name").value;
+        return(`Привет, ${userName}!`);
+        };
+        btnHello.onclick = () => divHello.innerHTML = hello();
     </script>
+    <div id="divHello">
+    </div>
 </body>
 </html>

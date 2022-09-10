@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            flex-wrap: wrap;
+            margin: auto;
+        }
+        .slider {
+            display: flex;
+            left: 0;
+            position: relative;
+            transition: all ease 0.5s;
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        button {
+            margin: 20px;
+            padding: 5px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slider">
+            <img src="/slider/images/photo_2022-08-18_10-58-01.jpg" alt="">
+            <img src="/slider/images/photo_2022-08-18_11-02-20.jpg" alt="">
+            <img src="/slider/images/photo_2022-08-18_11-02-06.jpg" alt="">
+            <img src="/slider/images/photo_2022-08-18_11-02-19.jpg" alt="">
+        </div>
+    </div>
+    <div class="buttons">
+        <button id="prev">Назад</button>
+        <button id="next">Вперёд</button>
+    </div>
+    
+    <script>
+        let offset = 0;
+        const slider = document.querySelector('.slider');
+
+        document.querySelector('#next').addEventListener('click', function(){
+            offset = offset + 300;
+            if (offset > 900) {
+                offset = 0;
+            }
+            slider.style.left = - Number(offset) + 'px';
+        });
+        document.querySelector('#prev').addEventListener('click', function(){
+            offset = offset - 300;
+            if (offset < 0) {
+                offset = 900;
+            }
+            slider.style.left = - Number(offset) + 'px';
+        })
+    </script>
+</body>
+</html>
