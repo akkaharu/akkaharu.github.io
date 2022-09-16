@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 100%;
+            background-color: rgba(0,0,0,0.2); 
+            color: white;
+            font-family: 'Roboto';
+        }
+        input {
+            border: rgb(153, 153, 153) solid 1px;
+            background-color: rgba(19, 50, 75, 0); 
+            padding: 5px;
+        }
+        .modal-window{
+            display: flex;
+            flex-wrap: wrap;
+            margin: auto;
+            overflow: hidden;
+            width: 500px;
+            height: min-content;
+            background-color: rgba(11, 34, 53, 0.811);
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+        }
+        .slider{
+            display: flex;
+            left: 0;
+            position: relative;
+            transition: all ease 0.5s;
+        }
+        #sign-buttons {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        #sign-up  {
+            height: 40px;
+            width: 46%;
+        }
+        #sign-in {
+            height: 40px;
+            width: 46%;
+        }
+        #form__sign-up {
+            display: grid;
+            grid-template-areas: 
+                'header header'
+                'surname name'
+                'login login'
+                'password password'
+                'repeatPassword repeatPassword'
+                'form__sign-up__button form__sign-up__button';
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5em;
+            width: 500px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #form__sign-in {
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            padding: 20px;
+            box-sizing:border-box;
+            gap: 0.5em;
+        }
+
+        #form__sign-up__header {
+            grid-area: header;
+            text-align: center;
+        }
+        #name {
+            grid-area: name;
+        }
+        #surname {
+            grid-area: surname;
+        }
+        #login {
+            grid-area: login;
+        }
+        #password {
+            grid-area: password;
+        }
+        #repeatPassword {
+            grid-area: repeatPassword;
+        }
+        #form__sign-up__button{
+            grid-area: form__sign-up__button;
+            height: 50px;
+            text-transform: uppercase;
+        }
+        button {
+            background-color: rgb(32, 178, 151);
+            border: none;
+            color: white;
+        }
+        .sign {
+            background-color: gray;
+            border: none;
+            color: white;
+        }
+        #errorMessage{
+            color: red;
+            text-align: center;
+            width: 100%;
+        }
+        #form__sign-in__button {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <section class="modal-window">
+        <div id="sign-buttons">
+            <input type="button" value="Зарегистрироваться" id="sign-up" class="sign" onclick="changeColorUp()">
+            <input type="button" value="Войти" id="sign-in" class="sign" onclick="changeColorIn()">
+        </div>
+        
+        <div class="slider">
+            <div id="form__sign-up">
+                <h3 id="form__sign-up__header">Регистрация</h3>
+                <input type="text" placeholder="Фамилия" id="surname">
+                <input type="text" placeholder="Имя" id="name">
+                <input type="text" placeholder="Логин" id="login">
+                <input type="password" placeholder="Пароль" id="password">
+                <input type="password" placeholder="Повторите пароль" id="repeatPassword">
+                <button id="form__sign-up__button">Зарегистрироваться</button>  
+            </div>
+            <div id="form__sign-in">
+                <h3>Вход</h3>
+                <input type="text" id="sign-in__login" placeholder="Логин">
+                <input type="password" id="sign-in__password" placeholder="Пароль">
+                <button id="form__sign-in__button">Войти</button>
+            </div>
+        </div>
+        <div id="errorMessage">
+
+        </div>
+         
+    </section>
+     
+    <script>
+        let offset = 0;
+        const slider = document.querySelector('.slider');
+
+        document.querySelector('#sign-in').addEventListener('click', function(){
+            offset = offset + 500;
+            if (offset > 500) {
+                offset = 500;
+            }
+            slider.style.left = - Number(offset) + 'px';
+        });
+        document.querySelector('#sign-up').addEventListener('click', function(){
+            offset = offset - 500;
+            if (offset < 0) {
+                offset = 0;
+            }
+            slider.style.left = - Number(offset) + 'px';
+        })
+        
+        document.getElementById('form__sign-up__button').addEventListener('click', function(){
+            document.getElementById('errorMessage').innerHTML = "";
+            if (document.getElementById('surname').value === ''){
+                document.getElementById('errorMessage').innerHTML+= 'Поле фамилия не заполнено!</br>';
+            }
+            if (document.getElementById('name').value === ''){
+                document.getElementById('errorMessage').innerHTML+= 'Поле имя не заполнено!</br>';
+            }
+            if (document.getElementById('login').value === ''){
+                document.getElementById('errorMessage').innerHTML+= 'Ваш логин не заполнен!</br>';
+            }
+            if (document.getElementById('password').value === ''){
+                document.getElementById('errorMessage').innerHTML+= 'Ваш пароль не заполнен!</br>';
+            }
+            if (document.getElementById('repeatPassword').value === ''){
+                document.getElementById('errorMessage').innerHTML+= 'Поле повторите пароль не заполнено!</br>';
+            }
+        })
+        const changeColorUp = () => {
+            const btnChangeColor = document.getElementById('sign-up');
+            btnChangeColor.style.backgroundColor = 'rgb(32, 178, 151)';
+        }
+        
+        const changeColorIn = () => {
+            const btnChangeColor = document.getElementById('sign-in');
+            btnChangeColor.style.backgroundColor = 'rgb(32, 178, 151)';
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Выберите цвет темы</p>
+    <select id="select" >
+        <option id="light" value="light">Светлая тема</option>
+        <option id="gray" value="pink">Розовая тема</option>
+        <option id="dark" value="dark">Тёмная тема</option>
+      </select>
+      <script>
+        document.addEventListener('change', function(){
+            if ( document.getElementById('select').value == 'light') {
+                document.body.style.backgroundColor = 'white';} 
+            else if ( document.getElementById('select').value == 'pink') {
+                document.body.style.backgroundColor = 'pink';}
+            else  {
+                document.body.style.backgroundColor = 'gray';}
+        })
+      </script>
+</body>
+</html>
