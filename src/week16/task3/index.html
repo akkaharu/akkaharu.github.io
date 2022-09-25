@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="message1"></p>
+    <p id="message2"></p>
+    <p id="message3"></p>
+    <p id="message4"></p>
+    <script>
+        const mass1 = ['js', 'css', 'html'];
+        const message = document.getElementById('message1').innerHTML += mass1[0];
+
+        const mass2 = [0, 1, false, 2, undefined, '', 3, null];
+
+        message2.innerHTML += mass2.filter(Number);
+
+        const mass3 = [[1,2], [1,2,3], [1,2,3,4]];
+
+        message3.innerHTML += mass3.findIndex(el=>el>3);// -1 почему-то пишет
+    </script>
+</body>
+</html>
