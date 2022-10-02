@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dialog-window{
+            display: flex;
+            flex-direction: column;
+            width: 800px;
+            height: 600px;
+            margin: auto;
+            border: 1px solid red;
+        }
+        #message {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="dialog-window">
+        <div id="message"></div>
+        <input type="text" id="input">
+        <button id="send">Send</button>
+    </div>
+    
+    <script>
+        
+
+        document.getElementById('send').addEventListener('click', function(){
+            const input = document.getElementById('input').value;
+            const input1 = input.toLowerCase();
+
+            if (input1.indexOf('viagra') !== - 1) {
+                const censorshipInput = input1.replace('viagra', '***');
+                document.getElementById('message').innerHTML += `${censorshipInput} <br/>`;
+            } else  
+                if (input1.indexOf('xxx') !== - 1) {
+                const censorshipInput = input1.replace('xxx', '***');
+                document.getElementById('message').innerHTML += `${censorshipInput} <br/>`;
+            } else 
+                {document.getElementById('message').innerHTML += `${input} <br/>`;
+            };
+        })
+
+    </script>
+</body>
+</html>

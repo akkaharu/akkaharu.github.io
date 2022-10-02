@@ -12,14 +12,12 @@
     <p id="message"></p>
     <p id="sum"></p>
     <script>
-        const input = document.getElementById('input');
-        const done = document.getElementById('done');
-        const elems = [1, 4, 3, 2, 5];
+        
 
         const sumInput = () => {
-            if (!input.value) { 
-                document.getElementById('message').innerHTML+= 'Введите значение</br>';
-            }
+            const input = document.getElementById('input');
+            const done = document.getElementById('done');
+            const elems = [];
 
             input.addEventListener('keydown', function() {
                     for (i = 0; i < 5; i++) {
@@ -29,17 +27,22 @@
                         input[i].value = elems[i];
                     }
             })
+            console.log(elems);// не понимаю, почему возвращает пустой массив
 
             done.addEventListener('click', function() {
-                document.getElementById('message').innerHTML+= elems.sort();
+                if (!input.value) { 
+                document.getElementById('message').innerHTML += 'Введите значение </br>';
+                } else {
+                    document.getElementById('message').innerHTML += '';
+                }
+                document.getElementById('message').innerHTML += elems.sort();
 
-                const sumElems = elem.reduce(function(sum, current) {
+                const sumElems = elems.reduce(function(sum, current) {
                     return sum + current;
-                    document.getElementById('sum').innerHTML+= result;
+                    document.getElementById('sum').innerHTML += result;
                 }, 0);
                 
             })
-            //document.getElementById('message').innerHTML+= 'Поле 1 не заполнено!</br>';
         };
         
         sumInput();

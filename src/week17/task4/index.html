@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="random">Сгенерировать случайные числа</button>
+    <p id="numbers"></p>
+    <p id="min"></p>
+    <p id="max"></p>
+    <p id="average"></p>
+    <p id="sum"></p>
+    <p id="multiply"></p>
+    <script>
+        document.getElementById('random').addEventListener('click',function (min, max) {
+                let arr = [];
+                for (i = 0; i < 10; i++ ){
+                    arr.push(Math.round(Math.random() * 20) - 10)
+                }
+                document.getElementById('numbers').innerHTML = `Сгенерировали: ${arr}`;
+
+                let minNumb = Math.min(...arr);
+                document.getElementById('min').innerHTML = `Минимальное: ${minNumb}`;
+
+                let maxNumb = Math.max(...arr);
+                document.getElementById('max').innerHTML = `Максимальное: ${maxNumb}`;
+
+                let averageNumb = arr.reduce((sum, current) => sum + current, 0) / arr.length;
+                document.getElementById('average').innerHTML = `Среднее арифметическое: ${averageNumb}`;
+                
+                let sumNumb = arr.reduce((sum, current) => sum + current, 0);
+                document.getElementById('sum').innerHTML = `Сумма чисел: ${sumNumb}`;
+
+                let multiplyNumb = arr.reduce((sum, current) => sum * current, 1);
+                document.getElementById('multiply').innerHTML = `Произведение чисел: ${multiplyNumb}`;
+            }
+        )
+    </script>
+</body>
+</html>

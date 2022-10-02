@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <input type="text" id="username" placeholder="Фамилия Имя Отчество">
+    <button id="login">Зарегистрироваться</button>
+    <p id="surname"></p>
+    <p id="name"></p>
+    <p id="patronymic"></p>
+    <script>
+        document.getElementById('login').addEventListener('click', function() {
+            const userNames = document.getElementById('username').value;
+            const userNames1 = userNames.trim();
+            const array = userNames1.split(' ');
+            console.log(array);
+            
+            const surname = array[0];
+            const surname1 = surname.toLowerCase();
+            const surname2 = surname1[0].toUpperCase();
+            const surname3 = surname1.slice(1);
+            const getSurname = surname2 + surname3;
+
+            console.log(getSurname);
+
+            const name = array[1];
+            const name1 = name.toLowerCase();
+            const name2 = name1[0].toUpperCase();
+            const name3 = name1.slice(1);
+            const getName = name2 + name3;
+
+            console.log(getName);
+
+            const patronymic = array[2];
+            const patronymic1 = patronymic.toLowerCase();
+            const patronymic2 = patronymic1[0].toUpperCase();
+            const patronymic3 = patronymic1.slice(1);
+            const getPatronymic = patronymic2 + patronymic3;
+
+            console.log(getPatronymic);
+
+            document.getElementById('surname').innerHTML = `Фамилия: ${getSurname}`;
+            document.getElementById('name').innerHTML = `Имя: ${getName}`;
+            document.getElementById('patronymic').innerHTML = `Отчество: ${getPatronymic}`;
+
+            // for (let i=0; i<array.length; i++) {
+            //     let name = userNames.toLowerCase();
+            //     const name1 = name[0].toUpperCase();
+            //     const name2 = name.slice(1);
+            //     console.log(`${name1}${name2}`)
+            // }
+
+                //const getUserNames = userNames.toLowerCase();
+                //const getUserNames1 = getUserNames[0].toUpperCase();
+                //const getUserNames2 = getUserNames.slice(1);
+
+                //console.log(`${getUserNames1}${getUserNames2}`);
+            
+
+        })
+    </script>
+</body>
+</html>
