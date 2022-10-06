@@ -26,8 +26,9 @@
                     for(i = 0; i <= 5; i++) {
                         input[i].value = elems[i];
                     }
+                console.log(elems);// не понимаю, почему возвращает пустой массив    
             })
-            console.log(elems);// не понимаю, почему возвращает пустой массив
+            
 
             done.addEventListener('click', function() {
                 if (!input.value) { 
@@ -38,7 +39,7 @@
                 document.getElementById('message').innerHTML += elems.sort();
 
                 const sumElems = elems.reduce(function(sum, current) {
-                    return sum + current;
+                    result = sum + current;
                     document.getElementById('sum').innerHTML += result;
                 }, 0);
                 

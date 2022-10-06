@@ -1,0 +1,235 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(/fonts/RobotoCondensed-Bold.ttf);
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url(/fonts/RobotoCondensed-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url(/fonts/RobotoCondensed-Light.ttf);
+    font-weight: 300;
+    font-style: normal;
+}
+body {
+    max-width: 100%;
+    font-family: 'Roboto';
+    font-weight: 400;
+    background: linear-gradient(21deg, #dd03e4, #5611ec);
+    color: white;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+video{
+    width: 100%;
+    height: auto;
+}
+.video{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url(videofon_Moment.jpg) center/cover no-repeat;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.video::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+}
+.wrapper {
+    z-index: 3;
+    position: relative;
+    margin: 0 150px 100px 150px;
+}
+a {
+    color: white;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 150px;
+    background-color: blue;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 36px;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 105px;
+    font-weight: normal;
+    font-size: 24px;
+}
+#logo {
+    padding-left: 45px;
+}
+.navigation-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.navigation-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.navigation-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.call {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#tel {
+    text-decoration: none;
+}
+.main{
+    display: grid;
+    grid-template-areas: 
+        'main__header main__header'
+        'main__image main__description';
+    gap: 1em;
+}
+.main__header {
+    grid-area: main__header;
+    font-size: 46px;
+}
+.main__image {
+    grid-area: main__image;
+}
+.main__description {
+    grid-area: main__description;
+    font-weight: 300;
+    font-size: 36px;
+}
+.compound {
+    display: grid;
+    grid-template-areas: 
+        'compound-header compound-header compound-header'
+        'ingridient1 image ingridient4'
+        'ingridient2 image ingridient5'
+        'ingridient3 image ingridient6';
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 100px repeat(3, 1fr);
+    gap: 2em;
+    margin: 50px 150px 100px 150px;
+}
+.compound-header {
+    grid-area: compound-header;
+    text-align: center;
+    font-size: 2em;
+}
+#compound__Ingredient1 {
+    grid-area: ingridient1;
+}
+#compound__Ingredient2 {
+    grid-area: ingridient2;
+}
+#compound__Ingredient3 {
+    grid-area: ingridient3;
+}
+#compound__Ingredient4 {
+    grid-area: ingridient4;
+}
+#compound__Ingredient5 {
+    grid-area: ingridient5;
+}
+#compound__Ingredient6 {
+    grid-area: ingridient6;
+}
+.compound-image {
+    grid-area: image;
+    padding: 50px;
+}
+.compound-text {
+    font-weight: 300;
+    font-size: 16px;
+}
+.review {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 150px 100px 150px;
+}
+.review-text {
+    font-weight: 300;
+}
+.promo{
+    display: grid;
+    grid-template-areas: 
+        'promo-image promo-text'
+        'promo-list promo-list';
+    gap: 1em;
+    margin: 0 150px 100px 150px;
+}
+.promo__image {
+    grid-area: promo-image;
+}
+.promo__text {
+    grid-area: promo-text;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 46px;
+}
+.promo__list {
+    grid-area: promo-list;    
+}
+.list {
+    display: flex;
+    gap: 1em;
+}
+.form {
+    display: grid;
+    grid-template-areas: 
+        'form__top form__top'
+        'form__form form__image';
+    grid-template-columns: 3fr 2fr;
+    gap: 2em;
+    margin: 0 150px 100px 150px;
+}
+.form__top {
+    grid-area: form__top;
+    font-size: 46px;
+}
+.form__image {
+    grid-area: form__image;
+}
+#form__form {
+    grid-area: form__form;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 80px;
+    line-height: 36px;
+    font-size: 36px;
+    background-color: rgba(6, 84, 167, 0.211);
+}
+input {
+    height: 50px;
+}
