@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+            width: 25%;
+            gap: 1em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Анкета хозяина кошки</h1>
+    <p>Ваше имя*</p>
+    <input type="text" id="name" required>
+    <p>Ваша фамилия*</p>
+    <input type="text" id="surname" required>
+    <p>Ваш номер телефона*</p>
+    <input type="tel" id="tel" required>
+    <p>Кличка вашего питомца</p>
+    <input type="text" id="pet-name">
+
+    <h4>Выберите породу:</h4>
+    <select id="selectedBreed">
+        <option value="british shorthair">Британская короткошерстная</option>
+        <option value="british longhair">Британская длинношерстная</option>
+        <option value="maine coon">Мейн-кун</option>
+        <option value="persian">Персидская</option>
+        <option value="sphynx">Сфинкс</option>
+        <option value="outbreed cat">Беспородная кошка</option>
+    </select>
+    <p>Здесь нет нужной породы<br/></p>
+    <input type="text" placeholder="Ваш вариант" id="breed">
+
+    <h4>Чем вы кормите любимца?</h4>
+    <p>Влажный корм</p>
+    <input type="checkbox" name="food" value="1">
+    <p>Сухой корм</p>
+    <input type="checkbox" name="food" value="2">
+    <p>Натуральный корм</p>
+    <input type="checkbox" name="food" value="3">
+
+    <h4>Пол вашего питомца</h4>
+    <p>Самец</p>
+    <input type="radio" name="gender" value="male">
+    <p>Самка</p>
+    <input type="radio" name="gender" value="female">
+
+    <h4>Вес питомца</h4>
+    <input type="number" min="0" max="20" id="weight">
+
+    <h4>Возраст питомца</h4>
+    <input type="number" min="0" max="20" id="age">
+
+    <h4>Какой характер у вашего питомца?</h4>
+    <textarea name="character" id="" cols="30" rows="10" placeholder="Расскажите о характере"></textarea>
+
+    <h4>Приложите фото питомца</h4>
+    <input type="file">
+
+    <div class="form">
+        <input type="text" placeholder="E-Mail*" id="email" required>
+        <input type="password" placeholder="Пароль*" id="password" required>
+
+        <input type="button" value="Сохранить анкету" id="save">
+        <p id="errorMessage">
+
+        </p>
+    </div>
+    <script>
+        const surname = document.getElementById('surname');
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const tel = document.getElementById('tel');        
+        const saveBtn = document.getElementById('save');
+        const errorMessage = document.getElementById('errorMessage')
+
+        const petName = document.getElementById('pet-name');
+        const selectedBreed = document.getElementById('selectedBreed');
+        const weight = document.getElementById('weight');
+        const age = document.getElementById('age');
+
+        const telFormat = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+        const mailFormat = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
+        const nameFormat = /^[А-ЯЁ]*$/i;
+        const passwordFormat = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
+
+        class Cat {
+            constructor(petName, breed, food, gender, weight, age) {
+                this.petName = petName;
+                this.breed = breed;
+                this.food = food;
+                this.gender= gender;
+                this.weight = weight;
+                this.age = age;
+            }
+        }
+        const gender = document.querySelectorAll('input[name="gender"]')
+        
+        saveBtn.addEventListener('click', function(){
+            const checkboxes = document.getElementsByName('food');
+            for (const g of gender) {
+                if (g.checked) {
+                    console.log(g.value)
+                    return g;
+                }
+            }
+
+        const breedValue = selectedBreed.value;
+        let userCat = new Cat( `${petName.value}`, `${breedValue}`, `${g}`, `${weight.value}`, `${age.value}`)
+        console.log(userCat);
+
+        errorMessage.innerHTML = "";
+        if (surname.value === '') {
+            errorMessage.innerHTML+= 'Поле фамилия не заполнено!</br>';
+        } else if (surname.value.match(nameFormat)) {
+            errorMessage.innerHTML+= ''
+        } else {
+            errorMessage.innerHTML+= "Фамилия введена неверно!</br>";
+        }
+            
+        if (name.value === '') {
+            errorMessage.innerHTML+= 'Поле имя не заполнено!</br>';
+            } else if (name.value.match(nameFormat)) {
+                errorMessage.innerHTML+= ''
+            } else {
+                errorMessage.innerHTML+= "Имя введено неверно!</br>";
+            }
+
+        if (email.value === '') {
+            errorMessage.innerHTML+= 'Ваш E-Mail не заполнен!</br>';
+            } else if (email.value.match(mailFormat)) {
+                errorMessage.innerHTML+= ''
+            } else {
+                errorMessage.innerHTML+= "Ваш адрес электронной почты введен неверно!</br>";
+            }
+
+        if (tel.value === '') {
+            errorMessage.innerHTML+= 'Ваш телефон не заполнен!</br>';
+            } else if (email.value.match(telFormat)) {
+                errorMessage.innerHTML+= ''
+            } else {
+                errorMessage.innerHTML+= "Ваш телефон введен неверно!</br>";
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

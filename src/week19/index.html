@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="E-Mail"  id="eMail">
+    <button id="save">save</button>
+    <script>
+        const mailFormat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+        const domainFormat = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/;
+        const dateFormat = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
+        const phoneFormat = /^([+]?[0-9\s-\(\)]{3,25})*$/i;
+
+        const eMail = document.getElementById('eMail');
+        let domain = 'itgirlschool.ru';
+
+        class Validator {
+            static CheckEmail(email) {
+                let isEmail = false;
+                if(eMail.value.match(mailFormat)) {
+                    isEmail = true;
+                }
+                return isEmail;
+            }
+            static CheckDomain(domain) {
+                let isDomain = false;
+                if(domain.match(domainFormat)) {
+                    isDomain = true;
+                }
+                return isDomain;
+            }
+            static CheckDate(date) {
+                let isDate = false;
+                if(date.match(dateFormat)) {
+                    isDate = true;
+                }
+                return isDate;
+            }
+            static CheckPhone(phone) {
+                let isPhone = false;
+                if(phone.match(phoneFormat)) {
+                    isPhone = true;
+                }
+                return isPhone;
+            }
+        }
+        const validator = new Validator();
+        console.log(Validator.CheckEmail('alisa@mail.ru'));
+        console.log(Validator.CheckDomain(domain));
+        console.log(Validator.CheckDate('12.05.2021'));
+        console.log(Validator.CheckPhone('+7(910)123-45-67'));
+        
+        const save = document.getElementById('save')
+
+        save.addEventListener('click', function()
+        {
+            if(Validator.CheckEmail(eMail))
+            {
+                alert('E-Mail неверный');
+            } else {
+                console.log('Все ок');
+            }
+        })
+    </script>
+</body>
+</html>

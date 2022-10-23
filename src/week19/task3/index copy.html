@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1em;
+        }
+        input {
+            width: fit-content;
+        }
+        button {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+        #errorMessage {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="Напиши первое число" id="num1">
+    <input type="text" placeholder="Напиши второе число" id="num2">
+
+    <select id="selectedAction">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+
+    <button id="calc">Посчитать</button>
+
+    <p id="errorMessage">
+    </p>
+
+    <p id="equal">
+    </p>
+
+    <script>
+        const errorMessage = document.getElementById('errorMessage');
+        const equal = document.getElementById('equal');
+        const num1 = document.getElementById("num1");
+        const num2 = document.getElementById("num2");
+
+        const selectedAction = document.getElementById('selectedAction');
+        calc.addEventListener('click', function() {
+
+            class Calc {
+                constructor()
+                static calc() {
+                    equal.innerHTML = Number(num1.value) + selectedAction.value + Number(num2.value);
+                    }
+                }
+                    if (!num1.value){
+                        errorMessage.innerHTML += 'Поле 1 не заполнено!</br>';
+                        equal.innerHTML = '';}
+
+                    if (!num2.value){
+                        errorMessage.innerHTML += 'Поле 2 не заполнено!</br>';
+                        equal.innerHTML = ''; }
+                    Calc.calc();
+            })
+        
+        
+    </script>
+</body>
+</html>
