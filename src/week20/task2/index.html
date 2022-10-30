@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 50px 150px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <h2 id="title"></h2>
+        <h3 id="date"></h3>
+        <p id="explanation"></p>
+        <img src="" alt="" id="hdurl">
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", getDayPicture());
+
+        const title = document.getElementById('title');
+        const date = document.getElementById('date');
+        const explanation = document.getElementById('explanation');
+        const pic = document.getElementById('hdurl');
+
+        function getDayPicture() {
+            fetch('https://api.nasa.gov/planetary/apod?api_key=JijWsF1WkWKsQL0yAFTJf0aQdhr1HnN8prhTkzh7')
+            .then(response => response.json())
+            .then(data => {
+                title.innerText = data.title;
+                date.innerText = data.date;
+                explanation.innerText = data.explanation;
+                pic.src = data.hdurl;
+            })
+            .catch(error => console.log(error));
+        }
+
+    </script>
+</body>
+</html>
