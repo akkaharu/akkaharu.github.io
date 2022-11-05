@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="entry-field">
+        <button id="search">Search!</button>
+        <div id="content">
+
+        </div>
+    </div>
+    <script>
+        const entryField = document.getElementById("entry-field");
+        const searchBtn = document.getElementById("search");
+        const content = document.getElementById("content");
+
+        searchBtn.addEventListener("click", function() {
+            fetch("https://api.giphy.com/v1/gifs/search?api_key=B2eaxOmjxH3OZc2ah9WLORnjH3MKrjXJ&q=" + entryField.value + "&limit=5&offset=0&rating=g&lang=en")
+            .then(response => response.json())
+            .then(data => data.data.map((item) => item.images['downsized_large'].url))
+            .then(urls => {
+                console.log(urls);
+                let imageContent = "";
+
+                for (let url of urls) {
+                    imageContent += `<img src = ${url} class = "image">`
+                }
+
+                content.innerHTML = imageContent;
+            })
+            .catch(error => console.log(error))
+        })
+    </script>
+</body>
+</html>

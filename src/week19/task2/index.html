@@ -106,7 +106,7 @@
         
         saveBtn.addEventListener('click', function(){
             const checkboxes = document.getElementsByName('food');
-            for (const g of gender) {
+            for (let g of gender) {
                 if (g.checked) {
                     console.log(g.value)
                     return g;

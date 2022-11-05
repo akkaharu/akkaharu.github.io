@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const name = 'arya';
+        const capitalize = () => {
+            const first = name.slice(0,1);
+            const firstUp = first.toUpperCase();
+            console.log(firstUp)
+            const newName = firstUp + name.slice(1);
+            return newName;
+        }
+        console.log(capitalize(name));
+        </script>
+</body>
+</html>
