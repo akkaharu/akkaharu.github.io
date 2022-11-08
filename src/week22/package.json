@@ -1,0 +1,11 @@
+{
+  "name": "test-npm",
+  "version": "1.0.0",
+  "description": "my first npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "glushkova anastasia",
+  "license": "ISC"
+}
