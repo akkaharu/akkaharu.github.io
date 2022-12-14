@@ -1,0 +1,16 @@
+body {
+    display: grid;
+    grid-template-areas: 
+        'header main aside';
+    grid-template-columns: 2fr 7fr 3fr;
+    margin: 50px 30px;
+}
+#header {
+    grid-area: header;
+}
+#main {
+    grid-area: main;
+}
+#aside {
+    grid-area: aside;
+}

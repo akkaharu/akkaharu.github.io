@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header">
+        <label for="list">Progect</label>
+        <select id="list" name="list">
+            <option value="Progect1">Progect1</option>
+            <option value="Progect2">Progect2</option>
+            <option value="Progect3">Progect3</option>
+            <option value="Progect4">Progect4</option>
+        </select>
+        <ul>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">Backlog</a></li>
+            <li><a href="">Active Sprint</a></li>
+            <li><a href="">Reports</a></li>
+            <li><a href="">Pages</a></li>
+            <li><a href="">Setting</a></li>
+            <li>
+                <div>
+                    <div>
+                        <p>Add</p>
+                        <p>New Task</p>
+                    </div>
+                    <button id="btn-add">+</button>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <main id="main">
+        <h3>Dashboard</h3>
+        <p></p>
+        <section id="welcome">
+            <p id="welcomeUser"></p>
+            <div id="welcomeUserForm">
+
+            </div>
+            <a href="" id="btn-more">More</a>
+        </section>
+
+        <section id="activity">
+            <canvas id="popChart" width="600" height="400"></canvas>
+        </section>
+
+        <section id="task">
+            
+        </section>
+    </main>
+    <aside id="aside">
+        <div id="profile">
+            <h3>Profile</h3>
+            <img src="" alt="">
+            <h3></h3>
+            <p></p>
+        </div>
+        <div id="current-progect">
+
+        </div>
+        <div id="comments">
+
+        </div>
+    </aside>
+    <script src="index.js"></script>
+    <script src="/task2/node_modules/chart.js/dist/chart.js"></script>
+</body>
+</html>

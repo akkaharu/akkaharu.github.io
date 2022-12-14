@@ -200,24 +200,35 @@
 
         upButton.addEventListener('click', function() {
             errorMessage.innerHTML = "";
+            let user = '';
 
             const validateField = (field, errorM, reg) => {
-            if (!field.value) {
-                errorMessage.innerHTML+= `Поле ${errorM} не заполнено!</br>`;
-                } else if (field.value.match(reg)) {
+                if (!field.value) 
+                {
+                    throw new Error(`Поле ${errorM} не заполнено!</br>`);
+                } 
+                else if (field.value.match(reg)) 
+                {
                     errorMessage.innerHTML+= ''
-                } else {
+                } 
+                else 
+                {
                     errorMessage.innerHTML+= `Поле ${errorM} введено неверно</br>`;
                 }
             }
-            validateField(surname, 'фамилия', nameFormat);
-            validateField(name, 'имя', nameFormat);
-            validateField(email, 'E-mail', mailFormat);
-            validateField(password, 'пароль', passwordFormat);
-            validateField(repeatPassword, 'повторите пароль', passwordFormat);
 
-            let user = new User (`${surname.value}`, `${name.value}`, `${email.value}`, `${password.value}`)
-            console.log(user);
+            try {
+                user = new User (`${surname.value}`, `${name.value}`, `${email.value}`, `${password.value}`)
+                console.log(user);
+                
+                validateField(surname, 'фамилия', nameFormat);
+                validateField(name, 'имя', nameFormat);
+                validateField(email, 'E-mail', mailFormat);
+                validateField(password, 'пароль', passwordFormat);
+                validateField(repeatPassword, 'повторите пароль', passwordFormat);
+            } catch (error) {
+                errorMessage.innerHTML+=error;
+            }         
 
             fetch("https://httpbin.org/post", {
                 method: "POST",
